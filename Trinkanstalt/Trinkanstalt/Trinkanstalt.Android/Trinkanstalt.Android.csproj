@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9A255A3E-29C3-4462-BD93-10461FAAA3CB}</ProjectGuid>
+    <ProjectGuid>{BB67E696-1E70-408C-AFDB-BEC7127938AB}</ProjectGuid>
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TemplateGuid>{9AA2D3C6-3393-45F1-8E7C-5A9901728795}</TemplateGuid>
     <OutputType>Library</OutputType>
@@ -88,7 +88,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Trinkanstalt\Trinkanstalt.csproj">
-      <Project>{6A4ADC74-574A-48E6-8514-EF9894A08B03}</Project>
+      <Project>{DAC329C7-64AC-413E-8C3A-FD6E21EE9FFE}</Project>
       <Name>Trinkanstalt</Name>
     </ProjectReference>
   </ItemGroup>

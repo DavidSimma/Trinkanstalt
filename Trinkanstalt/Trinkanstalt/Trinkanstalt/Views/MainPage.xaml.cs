@@ -6,6 +6,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 using Trinkanstalt.Models;
+using Xamarin.Essentials;
 
 namespace Trinkanstalt.Views
 {
@@ -21,7 +22,7 @@ namespace Trinkanstalt.Views
 
             MasterBehavior = MasterBehavior.Popover;
 
-            MenuPages.Add((int)MenuItemType.Browse, (NavigationPage)Detail);
+            MenuPages.Add((int)MenuItemType.Startseite, (NavigationPage)Detail);
         }
 
         public async Task NavigateFromMenu(int id)
@@ -30,11 +31,11 @@ namespace Trinkanstalt.Views
             {
                 switch (id)
                 {
-                    case (int)MenuItemType.Browse:
-                        MenuPages.Add(id, new NavigationPage(new ItemsPage()));
+                    case (int)MenuItemType.Startseite:
+                        MenuPages.Add(id, new NavigationPage(new StartPage()));
                         break;
-                    case (int)MenuItemType.About:
-                        MenuPages.Add(id, new NavigationPage(new AboutPage()));
+                    case (int)MenuItemType.LEDSteuern:
+                        if (DeviceInfo.Platform == DevicePlatform.Android) { MenuPages.Add(id, new NavigationPage(new LEDConnectionPage())); }
                         break;
                 }
             }

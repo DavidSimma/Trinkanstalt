@@ -6,8 +6,8 @@ namespace Trinkanstalt.Models
 {
     public enum MenuItemType
     {
-        Browse,
-        About
+        Startseite,
+        LEDSteuern
     }
     public class HomeMenuItem
     {

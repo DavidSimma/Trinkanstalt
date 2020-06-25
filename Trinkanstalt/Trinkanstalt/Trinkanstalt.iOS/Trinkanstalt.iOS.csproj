@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{2722DEA5-A525-4A23-84F4-B21455F04B73}</ProjectGuid>
+    <ProjectGuid>{361C822D-AE8F-472A-AF38-29E676921BC9}</ProjectGuid>
     <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TemplateGuid>{65C0771A-452F-423B-995C-F0AE46E643BA}</TemplateGuid>
     <OutputType>Exe</OutputType>
@@ -138,7 +138,7 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\Trinkanstalt\Trinkanstalt.csproj">
-      <Project>{6A4ADC74-574A-48E6-8514-EF9894A08B03}</Project>
+      <Project>{DAC329C7-64AC-413E-8C3A-FD6E21EE9FFE}</Project>
       <Name>Trinkanstalt</Name>
     </ProjectReference>
   </ItemGroup>
