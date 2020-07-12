@@ -71,6 +71,13 @@ namespace Trinkanstalt.models
             return this._owe;
         }
 
+        public static int GetAgeFromDate(DateTime birthday)
+        {
+            int years = DateTime.Now.Year - birthday.Year;
+            birthday = birthday.AddYears(years);
+            if (DateTime.Now.CompareTo(birthday) < 0) { years--; }
+            return years;
+        }
 
 
 
@@ -84,6 +91,14 @@ namespace Trinkanstalt.models
             this.Gender = gender;
             this.RelationShipStatus = relationShipStatus;
             this.Status = status;
+        }
+
+        public override string ToString()
+        {
+            return Firstname.ToString() + " " + Lastname.ToString() + " (" + Nickname.ToString() + ")" + "\n"
+                + GetAgeFromDate(Birthdate).ToString() + " " + Gender.ToString() + "\n" +
+                RelationShipStatus.ToString();
+
         }
     }
 }

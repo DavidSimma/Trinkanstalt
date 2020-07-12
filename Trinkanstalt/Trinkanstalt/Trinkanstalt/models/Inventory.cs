@@ -47,5 +47,10 @@ namespace Trinkanstalt.models
         {
             this._inventory = inventory;
         }
+
+        public override string ToString()
+        {
+            return this._inventory.ToString();
+        }
     }
 }

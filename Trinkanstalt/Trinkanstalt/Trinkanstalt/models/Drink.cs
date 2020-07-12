@@ -25,5 +25,11 @@ namespace Trinkanstalt.models
         {
             this.Amount = amount;
         }
+
+        public override string ToString()
+        {
+            return base.ToString() + "\n" +
+                Amount.ToString() + "ml";
+        }
     }
 }

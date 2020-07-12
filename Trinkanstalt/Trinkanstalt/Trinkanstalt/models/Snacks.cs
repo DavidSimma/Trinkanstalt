@@ -25,9 +25,15 @@ namespace Trinkanstalt.models
         public Snacks() : this("", 0.0, 0, 0, Spice.undefined) { }
         public Snacks(string name, double price, int popular, int weight, Spice spice) : base(name, price, popular)
         {
-            
             this.Weight = weight;
             this.Spice = spice;
+        }
+
+        public override string ToString()
+        {
+            return base.ToString() + "\n" +
+                Weight.ToString() + "g" + "\n" +
+                Spice.ToString();
         }
     }
 }

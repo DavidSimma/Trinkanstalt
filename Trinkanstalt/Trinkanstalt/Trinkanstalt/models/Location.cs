@@ -8,7 +8,7 @@ namespace Trinkanstalt.models
     {
         private int _peopleLimit;
         private List<Person> _invited;
-        public Inventory inventory = new Inventory;
+        public Inventory inventory = new Inventory();
 
         public int LocationID { get; }
         public Person Host { get; set; }
@@ -41,6 +41,14 @@ namespace Trinkanstalt.models
             this.Address = address;
             this.PeopleLimit = peopleLimit;
             this.Invited = invited;
+        }
+
+        public override string ToString()
+        {
+            return "Veranstalter: " + Host.ToString() + "\n" +
+                Address.ToString() + "\n" +
+                "Platzbegrenzung: " + PeopleLimit.ToString() + " Personen";
+
         }
 
     }

@@ -23,5 +23,11 @@ namespace Trinkanstalt.models
         {
             this.AlcoholContent = alcoholContent;
         }
+
+        public override string ToString()
+        {
+            return base.ToString() + "\n" +
+                AlcoholContent.ToString() + "% Vol.";
+        }
     }
 }

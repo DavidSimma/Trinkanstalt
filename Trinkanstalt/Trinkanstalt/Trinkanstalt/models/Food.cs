@@ -20,5 +20,11 @@ namespace Trinkanstalt.models
             this.Price = price;
             this.Popular = popular;
         }
+
+        public override string ToString()
+        {
+            return Name.ToString() + "\n" +
+                Math.Round(Price, 2).ToString() + "€";
+        }
     }  
 }
