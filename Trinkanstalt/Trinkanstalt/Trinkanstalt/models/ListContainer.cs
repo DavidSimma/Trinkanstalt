@@ -30,6 +30,12 @@ namespace Trinkanstalt.models
         {
             return people.Count;
         }
+        public static Person getDefaultPerson()
+        {
+            return people[0];
+        }
+
+
 
         public static List<Food> getFood()
         {
@@ -52,10 +58,7 @@ namespace Trinkanstalt.models
             return food.Count;
         }
 
-        public static Person getDefaultPerson()
-        {
-            return people[0];
-        }
+        
 
         public ListContainer()
         {

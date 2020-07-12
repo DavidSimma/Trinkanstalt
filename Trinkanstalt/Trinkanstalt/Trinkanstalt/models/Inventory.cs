@@ -8,6 +8,7 @@ namespace Trinkanstalt.models
     {
         private Dictionary<Food, int> _inventory = new Dictionary<Food, int>();
 
+        public int InventoryID { get; }
         public void addFood(Food f, int amount)
         {
             if (_inventory.ContainsKey(f))

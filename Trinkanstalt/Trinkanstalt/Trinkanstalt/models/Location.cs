@@ -7,10 +7,10 @@ namespace Trinkanstalt.models
     class Location
     {
         private int _peopleLimit;
-        private List<Person> _invited;
         public Inventory inventory = new Inventory();
 
         public int LocationID { get; }
+        public string LocationTitel { get; set; }
         public Person Host { get; set; }
         public string Address { get; set; }
         public int PeopleLimit
@@ -24,30 +24,25 @@ namespace Trinkanstalt.models
                 }
             }
         }
-        public List<Person> Invited
-        {
-            get { return this._invited; }
-            set { if(Invited.Count <= PeopleLimit)
-                {
-                    this._invited = value;
-                } 
-            }
-        }
+        public bool LocationPass { get; set; }
 
-        public Location() : this(ListContainer.getDefaultPerson(), "", 5, null) { }
-        public Location(Person host, string address, int peopleLimit, List<Person> invited)
+        public Location() : this("", ListContainer.getDefaultPerson(), "", 5, false) { }
+        public Location(string locationTitle, Person host, string address, int peopleLimit, bool locationPass)
         {
+            this.LocationTitel = locationTitle;
             this.Host = host;
             this.Address = address;
             this.PeopleLimit = peopleLimit;
-            this.Invited = invited;
+            this.LocationPass = locationPass;
         }
 
         public override string ToString()
         {
-            return "Veranstalter: " + Host.ToString() + "\n" +
+            return LocationTitel + "\n" +
+                "Veranstalter: " + Host.ToString() + "\n" +
                 Address.ToString() + "\n" +
-                "Platzbegrenzung: " + PeopleLimit.ToString() + " Personen";
+                "Platzbegrenzung: " + PeopleLimit.ToString() + " Personen" + "\n" +
+                "Location freigegeben: " + LocationPass.ToString();
 
         }
 

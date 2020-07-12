@@ -26,6 +26,30 @@ namespace Trinkanstalt.models
     class Person
     {
         private Dictionary<Person, double> _owe = new Dictionary<Person, double>();
+
+        private List<Location> _locations = new List<Location>();
+
+        public void addLocation(Location l)
+        {
+            if (!_locations.Contains(l))
+            {
+                this._locations.Add(l);
+            }
+        }
+        public bool removeLocation(Location l)
+        {
+            if (_locations.Contains(l))
+            {
+                _locations.Remove(l);
+                return true;
+            }
+            return false;
+        }
+        public List<Location> GetLocations()
+        {
+            return this._locations;
+        }
+
         public int PersonID { get; }
         public string Firstname { get; set; }
         public string Lastname { get; set; }
