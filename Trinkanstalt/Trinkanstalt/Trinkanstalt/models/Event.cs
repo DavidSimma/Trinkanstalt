@@ -24,6 +24,16 @@ namespace Trinkanstalt.models
                 }
             }
         }
+        public bool EventActive
+        {
+            get { if (EventDate.Date > DateTime.Now.Date)
+                {
+                    return false;
+                }
+                return true;
+            }
+        }
+        
 
         public Event() : this("", ListContainer.getDefaultPerson(), ListContainer.getDefaulLocation(), DateTime.MinValue) { }
         public Event(string eventTitle, Person eventHost, Location eventLocation, DateTime eventDate)
@@ -40,7 +50,8 @@ namespace Trinkanstalt.models
             return EventTitle.ToString() + "\n" +
                 "Event-Host: " + EventHost.ToString() + "\n" +
                 EventLocation.ToString() + "\n" +
-                EventDate.ToString();
+                EventDate.ToString() + "\n" +
+                "Event aktiv: " + EventActive.ToString();
         }
     }
 }

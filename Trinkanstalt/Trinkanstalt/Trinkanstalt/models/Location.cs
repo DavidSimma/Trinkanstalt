@@ -7,8 +7,9 @@ namespace Trinkanstalt.models
     class Location
     {
         private int _peopleLimit;
-        public Inventory inventory = new Inventory();
+        public Inventory Inventory { get; }
 
+        
         public int LocationID { get; }
         public string LocationTitel { get; set; }
         public Person Host { get; set; }

@@ -61,7 +61,7 @@ namespace Trinkanstalt.models
         }
 
 
-        public static List<Location> getLocation()
+        public static List<Location> getLocations()
         {
             return _locations;
         }

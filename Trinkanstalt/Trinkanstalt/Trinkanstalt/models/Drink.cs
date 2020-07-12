@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Xamarin.Forms;
 
 namespace Trinkanstalt.models
 {
@@ -20,8 +21,8 @@ namespace Trinkanstalt.models
             }
         }
 
-        public Drink() : this("", 0.0, 0, 0.0) { }
-        public Drink(string name, double price, int popular, double amount) : base(name, price, popular)
+        public Drink() : this("", 0.0, false, 0.0, 0.0) { }
+        public Drink(string name, double price, bool paid, double popular, double amount) : base(name, price, paid, popular)
         {
             this.Amount = amount;
         }

@@ -20,18 +20,64 @@ namespace Trinkanstalt.models
                 _inventory.Add(f, amount);
             }
         }
-        public bool removeFood(Food f, int amount)
+        public bool removeFood(Drink d, int amount)
         {
-            if (_inventory.ContainsKey(f))
+            if (_inventory.ContainsKey(d))
             {
-                if ((_inventory[f] - amount) > 0)
+                if ((_inventory[d] - amount) > 0)
                 {
-                    _inventory[f] -= amount;
+                    _inventory[d] -= amount;
+                    foreach(Drink drink in ListContainer.getFood())
+                    {
+                        if (d.FoodID.Equals(drink.FoodID))
+                        {
+                            drink.Popular += drink.Amount * amount;
+                        }
+                    }                    
                     return true;
                 }
-                if ((_inventory[f] - amount) == 0)
+                if ((_inventory[d] - amount) == 0)
                 {
-                    _inventory.Remove(f);
+                    _inventory.Remove(d);
+                    foreach (Drink drink in ListContainer.getFood())
+                    {
+                        if (d.FoodID.Equals(drink.FoodID))
+                        {
+                            drink.Popular += drink.Amount * amount;
+                        }
+                    }
+                    return true;
+                }
+
+            }
+            return false;
+        }
+        public bool removeFood(Snacks s, int amount)
+        {
+            if (_inventory.ContainsKey(s))
+            {
+                if ((_inventory[s] - amount) > 0)
+                {
+                    _inventory[s] -= amount;
+                    foreach (Snacks snack in ListContainer.getFood())
+                    {
+                        if (s.FoodID.Equals(snack.FoodID))
+                        {
+                            snack.Popular += snack.Weight * amount;
+                        }
+                    }
+                    return true;
+                }
+                if ((_inventory[s] - amount) == 0)
+                {
+                    _inventory.Remove(s);
+                    foreach (Snacks snack in ListContainer.getFood())
+                    {
+                        if (s.FoodID.Equals(snack.FoodID))
+                        {
+                            snack.Popular += snack.Weight * amount;
+                        }
+                    }
                     return true;
                 }
 
