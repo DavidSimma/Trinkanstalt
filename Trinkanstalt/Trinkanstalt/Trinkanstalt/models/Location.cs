@@ -29,6 +29,7 @@ namespace Trinkanstalt.models
         public Location() : this("", ListContainer.getDefaultPerson(), "", 5, false) { }
         public Location(string locationTitle, Person host, string address, int peopleLimit, bool locationPass)
         {
+            this.LocationID = ListContainer.createLocationID();
             this.LocationTitel = locationTitle;
             this.Host = host;
             this.Address = address;

@@ -24,5 +24,23 @@ namespace Trinkanstalt.models
                 }
             }
         }
+
+        public Event() : this("", ListContainer.getDefaultPerson(), ListContainer.getDefaulLocation(), DateTime.MinValue) { }
+        public Event(string eventTitle, Person eventHost, Location eventLocation, DateTime eventDate)
+        {
+            this.EventID = ListContainer.createEventID();
+            this.EventTitle = eventTitle;
+            this.EventHost = eventHost;
+            this.EventLocation = eventLocation;
+            this.EventDate = eventDate;
+        }
+
+        public override string ToString()
+        {
+            return EventTitle.ToString() + "\n" +
+                "Event-Host: " + EventHost.ToString() + "\n" +
+                EventLocation.ToString() + "\n" +
+                EventDate.ToString();
+        }
     }
 }
