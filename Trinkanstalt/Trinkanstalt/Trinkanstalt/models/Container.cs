@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Trinkanstalt.models
 {
-    class ListContainer
+    class Container
     {
         private static List<Person> _people = new List<Person>();
         private static List<Food> _food = new List<Food>();
@@ -114,7 +114,7 @@ namespace Trinkanstalt.models
 
 
 
-        public ListContainer()
+        public Container()
         {
             _people.Add(new Person("", "", "Admin", DateTime.Today, Gender.unknown, RelationShipStatus.complicated, Status.admin ));
             _locations.Add(new Location("", getDefaultPerson(), "", 0, false));

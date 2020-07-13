@@ -16,7 +16,7 @@ namespace Trinkanstalt.models
         public Food() : this("", 0.0, false, 0.0) { }
         public Food(string name, double price, bool paid, double popular)
         {
-            this.FoodID= ListContainer.createFoodID();
+            this.FoodID= Container.createFoodID();
             this.Name = name;
             this.Price = price;
             this.Paid = paid;

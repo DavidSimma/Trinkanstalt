@@ -9,7 +9,7 @@ namespace Trinkanstalt.models
     {
         private Dictionary<Food, int> _articles = new Dictionary<Food, int>();
         private bool bought;
-        private List<Location> _locations = ListContainer.getLocations();
+        private List<Location> _locations = Container.getLocations();
 
         public List<Location> getLocations()
         {

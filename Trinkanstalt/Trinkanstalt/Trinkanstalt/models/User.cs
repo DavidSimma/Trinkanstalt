@@ -108,7 +108,7 @@ namespace Trinkanstalt.models
         public Person() : this("", "", "", DateTime.MinValue, Gender.unknown, RelationShipStatus.single, Status.user) { }
         public Person(string firstname, string lastname, string Nickname, DateTime BirthDate, Gender gender, RelationShipStatus relationShipStatus, Status status)
         {
-            this.PersonID = ListContainer.createPersonID();
+            this.PersonID = Container.createPersonID();
             this.Firstname = firstname;
             this.Lastname = lastname;
             this.Birthdate = Birthdate;

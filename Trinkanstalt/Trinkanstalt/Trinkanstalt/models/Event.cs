@@ -35,10 +35,10 @@ namespace Trinkanstalt.models
         }
         
 
-        public Event() : this("", ListContainer.getDefaultPerson(), ListContainer.getDefaulLocation(), DateTime.MinValue) { }
+        public Event() : this("", Container.getDefaultPerson(), Container.getDefaulLocation(), DateTime.MinValue) { }
         public Event(string eventTitle, Person eventHost, Location eventLocation, DateTime eventDate)
         {
-            this.EventID = ListContainer.createEventID();
+            this.EventID = Container.createEventID();
             this.EventTitle = eventTitle;
             this.EventHost = eventHost;
             this.EventLocation = eventLocation;

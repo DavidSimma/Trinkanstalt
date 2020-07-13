@@ -7,7 +7,6 @@ namespace Trinkanstalt.models
     class Location
     {
         private int _peopleLimit;
-        public Inventory Inventory { get; }
 
         
         public int LocationID { get; }
@@ -27,10 +26,10 @@ namespace Trinkanstalt.models
         }
         public bool LocationPass { get; set; }
 
-        public Location() : this("", ListContainer.getDefaultPerson(), "", 5, false) { }
+        public Location() : this("", Container.getDefaultPerson(), "", 5, false) { }
         public Location(string locationTitle, Person host, string address, int peopleLimit, bool locationPass)
         {
-            this.LocationID = ListContainer.createLocationID();
+            this.LocationID = Container.createLocationID();
             this.LocationTitel = locationTitle;
             this.Host = host;
             this.Address = address;

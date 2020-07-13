@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Trinkanstalt.models
 {
-    class Inventory
+    class UserInventory
     {
         private Dictionary<Food, int> _inventory = new Dictionary<Food, int>();
 
@@ -27,7 +27,7 @@ namespace Trinkanstalt.models
                 if ((_inventory[d] - amount) > 0)
                 {
                     _inventory[d] -= amount;
-                    foreach(Drink drink in ListContainer.getFood())
+                    foreach(Drink drink in Container.getFood())
                     {
                         if (d.FoodID.Equals(drink.FoodID))
                         {
@@ -39,7 +39,7 @@ namespace Trinkanstalt.models
                 if ((_inventory[d] - amount) == 0)
                 {
                     _inventory.Remove(d);
-                    foreach (Drink drink in ListContainer.getFood())
+                    foreach (Drink drink in Container.getFood())
                     {
                         if (d.FoodID.Equals(drink.FoodID))
                         {
@@ -59,7 +59,7 @@ namespace Trinkanstalt.models
                 if ((_inventory[s] - amount) > 0)
                 {
                     _inventory[s] -= amount;
-                    foreach (Snacks snack in ListContainer.getFood())
+                    foreach (Snacks snack in Container.getFood())
                     {
                         if (s.FoodID.Equals(snack.FoodID))
                         {
@@ -71,7 +71,7 @@ namespace Trinkanstalt.models
                 if ((_inventory[s] - amount) == 0)
                 {
                     _inventory.Remove(s);
-                    foreach (Snacks snack in ListContainer.getFood())
+                    foreach (Snacks snack in Container.getFood())
                     {
                         if (s.FoodID.Equals(snack.FoodID))
                         {
@@ -89,8 +89,8 @@ namespace Trinkanstalt.models
             return this._inventory;
         }
 
-        public Inventory() : this(null) { }
-        public Inventory(Dictionary<Food, int> inventory)
+        public UserInventory() : this(null) { }
+        public UserInventory(Dictionary<Food, int> inventory)
         {
             this._inventory = inventory;
         }

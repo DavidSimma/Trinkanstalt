@@ -6,7 +6,7 @@ namespace Trinkanstalt.models
 {
     class Shop
     {
-        private List<Food> _article = ListContainer.getFood();
+        private List<Food> _article = Container.getFood();
 
         public List<Food> Article
         {
