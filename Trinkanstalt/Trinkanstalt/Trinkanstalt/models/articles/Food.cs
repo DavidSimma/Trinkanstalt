@@ -9,17 +9,15 @@ namespace Trinkanstalt.models
         public int FoodID { get; }
         public string Name { get; set; }
         public double Price { get; set; }
-        public bool Paid { get; set; }
         public double Popular { get; set; }
 
 
-        public Food() : this("", 0.0, false, 0.0) { }
-        public Food(string name, double price, bool paid, double popular)
+        public Food() : this("", 0.0, 0.0) { }
+        public Food(string name, double price, double popular)
         {
             this.FoodID= Container.createFoodID();
             this.Name = name;
             this.Price = price;
-            this.Paid = paid;
             this.Popular = popular;
         }
 

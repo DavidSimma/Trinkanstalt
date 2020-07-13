@@ -8,19 +8,19 @@ namespace Trinkanstalt.models
 {
     class Container
     {
-        private static List<Person> _people = new List<Person>();
+        private static List<User> _people = new List<User>();
         private static List<Food> _food = new List<Food>();
         private static List<Location> _locations = new List<Location>();
         private static List<Event> _events = new List<Event>();
 
-        public static List<Person> getPeople(){
+        public static List<User> getUser(){
             return _people;
         }
-        public static void addPerson(Person p)
+        public static void addUser(User p)
         {
             _people.Add(p);
         }
-        public static bool removePerson(Person p)
+        public static bool removeUser(User p)
         {
             if (_people.Remove(p))
             {
@@ -28,11 +28,11 @@ namespace Trinkanstalt.models
             }
             return false;
         }
-        public static int createPersonID()
+        public static int createUserID()
         {
             return _people.Count;
         }
-        public static Person getDefaultPerson()
+        public static User getDefaultUser()
         {
             return _people[0];
         }
@@ -87,7 +87,7 @@ namespace Trinkanstalt.models
         }
 
 
-        public static List<Event> getEvent()
+        public static List<Event> getEvents()
         {
             return _events;
         }
@@ -116,9 +116,9 @@ namespace Trinkanstalt.models
 
         public Container()
         {
-            _people.Add(new Person("", "", "Admin", DateTime.Today, Gender.unknown, RelationShipStatus.complicated, Status.admin ));
-            _locations.Add(new Location("", getDefaultPerson(), "", 0, false));
-            _events.Add(new Event("", getDefaultPerson(), getDefaulLocation(), DateTime.MinValue));
+            _people.Add(new User("", "", "Admin", DateTime.Today, Gender.unknown, RelationShipStatus.complicated, Status.admin ));
+            _locations.Add(new Location("", getDefaultUser(), "", 0, false));
+            _events.Add(new Event("", getDefaultUser(), getDefaulLocation(), DateTime.MinValue));
         }
     }
 }

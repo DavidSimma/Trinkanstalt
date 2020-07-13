@@ -23,9 +23,9 @@ namespace Trinkanstalt.models
         host,
         inferior
     }
-    class Person
+    class User
     {
-        private Dictionary<Person, double> _owe = new Dictionary<Person, double>();
+        private Dictionary<User, double> _owe = new Dictionary<User, double>();
 
         private List<Location> _locations = new List<Location>();
 
@@ -50,7 +50,7 @@ namespace Trinkanstalt.models
             return this._locations;
         }
 
-        public int PersonID { get; }
+        public int UserID { get; }
         public string Firstname { get; set; }
         public string Lastname { get; set; }
         public string Nickname { get; set; }
@@ -60,8 +60,9 @@ namespace Trinkanstalt.models
         public Gender Gender { get; set; }
         public RelationShipStatus RelationShipStatus { get; set; }
         public Status Status { get; set; }
+        public UserInventory Inventory { get; }
 
-        public void addOwe(Person p, double price)
+        public void addOwe(User p, double price)
         {
             if (_owe.ContainsKey(p))
             {
@@ -72,7 +73,7 @@ namespace Trinkanstalt.models
                 _owe.Add(p, price);
             }
         }
-        public bool removeOwe(Person p, double price)
+        public bool removeOwe(User p, double price)
         {
             if (_owe.ContainsKey(p))
             {
@@ -90,7 +91,7 @@ namespace Trinkanstalt.models
             }
             return false;
         }
-        public Dictionary<Person, double> getOwe()
+        public Dictionary<User, double> getOwe()
         {
             return this._owe;
         }
@@ -105,10 +106,10 @@ namespace Trinkanstalt.models
 
 
 
-        public Person() : this("", "", "", DateTime.MinValue, Gender.unknown, RelationShipStatus.single, Status.user) { }
-        public Person(string firstname, string lastname, string Nickname, DateTime BirthDate, Gender gender, RelationShipStatus relationShipStatus, Status status)
+        public User() : this("", "", "", DateTime.MinValue, Gender.unknown, RelationShipStatus.single, Status.user) { }
+        public User(string firstname, string lastname, string Nickname, DateTime BirthDate, Gender gender, RelationShipStatus relationShipStatus, Status status)
         {
-            this.PersonID = Container.createPersonID();
+            this.UserID = Container.createUserID();
             this.Firstname = firstname;
             this.Lastname = lastname;
             this.Birthdate = Birthdate;

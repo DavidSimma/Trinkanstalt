@@ -8,7 +8,8 @@ namespace Trinkanstalt.models
     {
         private Dictionary<Food, int> _inventory = new Dictionary<Food, int>();
 
-        public int InventoryID { get; }
+        public int UserInventoryID { get; }
+        public User UserInventoryHost { get; set; }
         public void addFood(Food f, int amount)
         {
             if (_inventory.ContainsKey(f))
@@ -27,13 +28,13 @@ namespace Trinkanstalt.models
                 if ((_inventory[d] - amount) > 0)
                 {
                     _inventory[d] -= amount;
-                    foreach(Drink drink in Container.getFood())
+                    foreach (Drink drink in Container.getFood())
                     {
                         if (d.FoodID.Equals(drink.FoodID))
                         {
-                            drink.Popular += drink.Amount * amount;
+                            drink.Popular += (drink.Amount * amount);
                         }
-                    }                    
+                    }
                     return true;
                 }
                 if ((_inventory[d] - amount) == 0)
@@ -43,7 +44,7 @@ namespace Trinkanstalt.models
                     {
                         if (d.FoodID.Equals(drink.FoodID))
                         {
-                            drink.Popular += drink.Amount * amount;
+                            drink.Popular += (drink.Amount * amount);
                         }
                     }
                     return true;
@@ -63,7 +64,7 @@ namespace Trinkanstalt.models
                     {
                         if (s.FoodID.Equals(snack.FoodID))
                         {
-                            snack.Popular += snack.Weight * amount;
+                            snack.Popular += (snack.Weight * amount);
                         }
                     }
                     return true;
@@ -75,7 +76,7 @@ namespace Trinkanstalt.models
                     {
                         if (s.FoodID.Equals(snack.FoodID))
                         {
-                            snack.Popular += snack.Weight * amount;
+                            snack.Popular += (snack.Weight * amount);
                         }
                     }
                     return true;
@@ -89,15 +90,76 @@ namespace Trinkanstalt.models
             return this._inventory;
         }
 
-        public UserInventory() : this(null) { }
-        public UserInventory(Dictionary<Food, int> inventory)
+        public double getTotalAlcoholAmount()
         {
-            this._inventory = inventory;
+            double totalAlcohol = 0;
+
+            Type a = getFood().GetType();
+            Type b = typeof(Alcohol);
+            if (a.Equals(b))
+            {
+                foreach (Alcohol d in getFood().Keys)
+                {
+                    totalAlcohol += (d.Amount * getFood()[d]);
+                }
+            }
+
+            return totalAlcohol;
+        }
+        public double getTotalMixtureAmount()
+        {
+            double totalMixture = 0;
+
+            Type a = getFood().GetType();
+            Type b = typeof(Mixture);
+            if (a.Equals(b))
+            {
+                foreach (Mixture d in getFood().Keys)
+                {
+                    totalMixture += (d.Amount * getFood()[d]);
+                }
+            }
+
+            return totalMixture;
+        }
+        public double getTotalSnackWeight()
+        {
+            double totalWeight = 0;
+
+            Type a = getFood().GetType();
+            Type b = typeof(Snacks);
+            if (a.Equals(b))
+            {
+                foreach (Snacks d in getFood().Keys)
+                {
+                    totalWeight += (d.Weight * getFood()[d]);
+                }
+            }
+
+            return totalWeight;
+        }
+        public double getTotalValue()
+        {
+            double totalValue = 0;
+            foreach(Food f in getFood().Keys)
+            {
+                totalValue += (f.Price * getFood()[f]);
+            }
+            return totalValue;
+        }
+
+
+        public UserInventory() : this(Container.getDefaultUser()) { }
+        public UserInventory(User userInventoryHost)
+        {
+            this.UserInventoryID = userInventoryHost.UserID;
+            this.UserInventoryHost = userInventoryHost;
         }
 
         public override string ToString()
         {
-            return this._inventory.ToString();
+            return "Inventory - Host: " + UserInventoryHost.ToString() + "\n" +
+                getFood().ToString();
         }
     }
 }

@@ -21,8 +21,8 @@ namespace Trinkanstalt.models
             }
         }
 
-        public Drink() : this("", 0.0, false, 0.0, 0.0) { }
-        public Drink(string name, double price, bool paid, double popular, double amount) : base(name, price, paid, popular)
+        public Drink() : this("", 0.0, 0.0, 0.0) { }
+        public Drink(string name, double price, double popular, double amount) : base(name, price, popular)
         {
             this.Amount = amount;
         }
