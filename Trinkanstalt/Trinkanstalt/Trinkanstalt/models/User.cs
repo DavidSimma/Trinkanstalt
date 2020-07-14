@@ -25,9 +25,10 @@ namespace Trinkanstalt.models
     }
     class User
     {
-        private Dictionary<User, double> _owe = new Dictionary<User, double>();
 
         private List<Location> _locations = new List<Location>();
+
+        public Balance Balance { get; }
 
         public void addLocation(Location l)
         {
@@ -45,11 +46,8 @@ namespace Trinkanstalt.models
             }
             return false;
         }
-        public List<Location> GetLocations()
-        {
-            return this._locations;
-        }
-
+        public List<Location> Locations { get { return this._locations; } }
+        
         public int UserID { get; }
         public string Firstname { get; set; }
         public string Lastname { get; set; }
@@ -62,39 +60,7 @@ namespace Trinkanstalt.models
         public Status Status { get; set; }
         public UserInventory Inventory { get; }
 
-        public void addOwe(User p, double price)
-        {
-            if (_owe.ContainsKey(p))
-            {
-                _owe[p] += price;
-            }
-            else
-            {
-                _owe.Add(p, price);
-            }
-        }
-        public bool removeOwe(User p, double price)
-        {
-            if (_owe.ContainsKey(p))
-            {
-                if ((_owe[p] - price) > 0)
-                {
-                    _owe[p] -= price;
-                    return true;
-                }
-                if ((_owe[p] - price) == 0)
-                {
-                    _owe.Remove(p);
-                    return true;
-                }
-
-            }
-            return false;
-        }
-        public Dictionary<User, double> getOwe()
-        {
-            return this._owe;
-        }
+        
 
         public static int GetAgeFromDate(DateTime birthday)
         {

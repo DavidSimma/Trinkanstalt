@@ -6,58 +6,76 @@ namespace Trinkanstalt.models
 {
     class TotalInventory
     {     
-        public List<UserInventory> getAllInventorys()
-        {
-            List<UserInventory> __inventorys = new List<UserInventory>();
-            foreach (User u in Container.getUser())
+        public List<UserInventory> AllInventorys { 
+            get 
             {
-                __inventorys.Add(u.Inventory);
-            }
-            return __inventorys;
+                List<UserInventory> __inventorys = new List<UserInventory>();
+                foreach (User u in Container.getUser())
+                {
+                    __inventorys.Add(u.Inventory);
+                }
+                return __inventorys;
+            } 
         }
+        
+            
 
-        public double getTotalAlcoholAmount()
-        {
-            double totalAlcohol = 0;
-            foreach(UserInventory ui in getAllInventorys())
+        public double TotalAlcoholAmount { 
+            get 
             {
-                totalAlcohol += ui.getTotalAlcoholAmount();
-            }
-            return totalAlcohol;
+                double totalAlcohol = 0;
+                foreach(UserInventory ui in AllInventorys)
+                {
+                    totalAlcohol += ui.TotalAlcoholAmount;
+                }
+                return totalAlcohol; 
+            } 
         }
-        public double getTotalMixtureAmount()
+        
+            
+        
+        public double TotalMixtureAmount
         {
-            double totalMixture = 0;
-            foreach (UserInventory ui in getAllInventorys())
+            get
             {
-                totalMixture += ui.getTotalMixtureAmount();
+                double totalMixture = 0;
+                foreach (UserInventory ui in AllInventorys)
+                {
+                    totalMixture += ui.TotalMixtureAmount;
+                }
+                return totalMixture;
             }
-            return totalMixture;
         }
-        private double getTotalSnackWeight()
+        private double TotalSnackWeight
         {
-            double totalWeight = 0;
-            foreach (UserInventory ui in getAllInventorys())
+            get
             {
-                totalWeight += ui.getTotalSnackWeight();
+                double totalWeight = 0;
+                foreach (UserInventory ui in AllInventorys)
+                {
+                    totalWeight += ui.TotalSnackWeight;
+                }
+                return totalWeight;
             }
-            return totalWeight;
         }
-        private double getTotalValue()
+        private double TotalValue
         {
-            double totalValue = 0;
-            foreach (UserInventory ui in getAllInventorys())
+            get
             {
-                totalValue += ui.getTotalValue();
+                double totalValue = 0;
+                foreach (UserInventory ui in AllInventorys)
+                {
+                    totalValue += ui.TotalValue;
+                }
+                return totalValue;
             }
-            return totalValue;
         }
 
         public TotalInventory() { }
 
         public override string ToString()
         {
-            return getAllInventorys().ToString();
+            return AllInventorys.ToString();
         }
     }
 }

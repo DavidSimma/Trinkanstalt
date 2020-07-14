@@ -29,10 +29,8 @@ namespace Trinkanstalt.models
             }
             return false;
         }
-        public List<User> getAllInvitedUser()
-        {
-            return this._invited;
-        }
+        public List<User> InvitedUser { get { return this._invited; } }
+        
         public void addUserToEvent(User u)
         {
             if (_coming.Count <= EventLocation.PeopleLimit)
@@ -48,10 +46,7 @@ namespace Trinkanstalt.models
             }
             return false;
         }
-        public List<User> getAllComingUser()
-        {
-            return this._coming;
-        }
+        public List<User> ComingUser { get { return this._coming; } }
 
 
         public bool EventActive
@@ -66,7 +61,7 @@ namespace Trinkanstalt.models
         }
         
 
-        public Event() : this("", Container.getDefaultUser(), Container.getDefaulLocation(), DateTime.MinValue) { }
+        public Event() : this("", Container.DefaultUser, Container.DefaulLocation, DateTime.MinValue) { }
         public Event(string eventTitle, User eventHost, Location eventLocation, DateTime eventDate)
         {
             this.EventID = Container.createEventID();

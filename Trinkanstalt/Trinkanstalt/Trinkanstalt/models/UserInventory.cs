@@ -90,66 +90,78 @@ namespace Trinkanstalt.models
             return this._inventory;
         }
 
-        public double getTotalAlcoholAmount()
+        public double TotalAlcoholAmount
         {
-            double totalAlcohol = 0;
-
-            Type a = getFood().GetType();
-            Type b = typeof(Alcohol);
-            if (a.Equals(b))
+            get
             {
-                foreach (Alcohol d in getFood().Keys)
+                double totalAlcohol = 0;
+
+                Type a = getFood().GetType();
+                Type b = typeof(Alcohol);
+                if (a.Equals(b))
                 {
-                    totalAlcohol += (d.Amount * getFood()[d]);
+                    foreach (Alcohol d in getFood().Keys)
+                    {
+                        totalAlcohol += (d.Amount * getFood()[d]);
+                    }
                 }
+
+                return totalAlcohol;
             }
-
-            return totalAlcohol;
         }
-        public double getTotalMixtureAmount()
+        public double TotalMixtureAmount
         {
-            double totalMixture = 0;
-
-            Type a = getFood().GetType();
-            Type b = typeof(Mixture);
-            if (a.Equals(b))
+            get
             {
-                foreach (Mixture d in getFood().Keys)
+                double totalMixture = 0;
+
+                Type a = getFood().GetType();
+                Type b = typeof(Mixture);
+                if (a.Equals(b))
                 {
-                    totalMixture += (d.Amount * getFood()[d]);
+                    foreach (Mixture d in getFood().Keys)
+                    {
+                        totalMixture += (d.Amount * getFood()[d]);
+                    }
                 }
+
+                return totalMixture;
             }
-
-            return totalMixture;
         }
-        public double getTotalSnackWeight()
+        public double TotalSnackWeight
         {
-            double totalWeight = 0;
-
-            Type a = getFood().GetType();
-            Type b = typeof(Snacks);
-            if (a.Equals(b))
+            get
             {
-                foreach (Snacks d in getFood().Keys)
+                double totalWeight = 0;
+
+                Type a = getFood().GetType();
+                Type b = typeof(Snacks);
+                if (a.Equals(b))
                 {
-                    totalWeight += (d.Weight * getFood()[d]);
+                    foreach (Snacks d in getFood().Keys)
+                    {
+                        totalWeight += (d.Weight * getFood()[d]);
+                    }
                 }
-            }
 
-            return totalWeight;
+                return totalWeight;
+            }
         }
-        public double getTotalValue()
+        public double TotalValue
         {
-            double totalValue = 0;
-            foreach(Food f in getFood().Keys)
+            get
             {
-                totalValue += (f.Price * getFood()[f]);
+                double totalValue = 0;
+                foreach (Food f in getFood().Keys)
+                {
+                    totalValue += (f.Price * getFood()[f]);
+                }
+                return totalValue;
             }
-            return totalValue;
         }
 
 
-        public UserInventory() : this(Container.getDefaultUser()) { }
+        public UserInventory() : this(Container.DefaultUser) { }
         public UserInventory(User userInventoryHost)
         {
             this.UserInventoryID = userInventoryHost.UserID;

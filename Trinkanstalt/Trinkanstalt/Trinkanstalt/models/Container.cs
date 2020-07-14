@@ -13,8 +13,12 @@ namespace Trinkanstalt.models
         private static List<Location> _locations = new List<Location>();
         private static List<Event> _events = new List<Event>();
 
-        public static List<User> getUser(){
-            return _people;
+        public static List<User> User
+        {
+            get
+            {
+                return _people;
+            }
         }
         public static void addUser(User p)
         {
@@ -32,16 +36,22 @@ namespace Trinkanstalt.models
         {
             return _people.Count;
         }
-        public static User getDefaultUser()
+        public static User DefaultUser
         {
-            return _people[0];
+            get
+            {
+                return _people[0];
+            }
         }
 
 
 
-        public static List<Food> getFood()
+        public static List<Food> Food
         {
-            return _food;
+            get
+            {
+                return _food;
+            }
         }
         public static void addFood(Food f)
         {
@@ -61,9 +71,12 @@ namespace Trinkanstalt.models
         }
 
 
-        public static List<Location> getLocations()
+        public static List<Location> Locations
         {
-            return _locations;
+            get
+            {
+                return _locations;
+            }
         }
         public static void addLocation(Location l)
         {
@@ -81,15 +94,21 @@ namespace Trinkanstalt.models
         {
             return _locations.Count;
         }
-        public static Location getDefaulLocation()
+        public static Location DefaulLocation
         {
-            return _locations[0];
+            get
+            {
+                return _locations[0];
+            }
         }
 
 
-        public static List<Event> getEvents()
+        public static List<Event> Events
         {
-            return _events;
+            get
+            {
+                return _events;
+            }
         }
         public static void addEvent(Event e)
         {
@@ -107,9 +126,12 @@ namespace Trinkanstalt.models
         {
             return _events.Count;
         }
-        public static Event getDefaulEvent()
+        public static Event DefaulEvent
         {
-            return _events[0];
+            get
+            {
+                return _events[0];
+            }
         }
 
 
@@ -117,8 +139,8 @@ namespace Trinkanstalt.models
         public Container()
         {
             _people.Add(new User("", "", "Admin", DateTime.Today, Gender.unknown, RelationShipStatus.complicated, Status.admin ));
-            _locations.Add(new Location("", getDefaultUser(), "", 0, false));
-            _events.Add(new Event("", getDefaultUser(), getDefaulLocation(), DateTime.MinValue));
+            _locations.Add(new Location("", DefaultUser, "", 0, false));
+            _events.Add(new Event("", DefaultUser, DefaulLocation, DateTime.MinValue));
         }
     }
 }

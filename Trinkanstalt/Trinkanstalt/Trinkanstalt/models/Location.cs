@@ -25,20 +25,24 @@ namespace Trinkanstalt.models
             }
         }
         public bool LocationPass { get; set; }
-        public List<Event> getLocatedEvents()
+        public List<Event> LocatedEvents
         {
-            List<Event> __foundEvents = new List<Event>();
-            foreach(Event e in Container.getEvents())
+            get
             {
-                if (e.EventActive && e.EventLocation.LocationID == this.LocationID)
+
+                List<Event> __foundEvents = new List<Event>();
+                foreach (Event e in Container.Events)
                 {
-                    __foundEvents.Add(e);
+                    if (e.EventActive && e.EventLocation.LocationID == this.LocationID)
+                    {
+                        __foundEvents.Add(e);
+                    }
                 }
+                return __foundEvents;
             }
-            return __foundEvents;
         }
 
-        public Location() : this("", Container.getDefaultUser(), "", 5, false) { }
+        public Location() : this("", Container.DefaultUser, "", 5, false) { }
         public Location(string locationTitle, User host, string address, int peopleLimit, bool locationPass)
         {
             this.LocationID = Container.createLocationID();

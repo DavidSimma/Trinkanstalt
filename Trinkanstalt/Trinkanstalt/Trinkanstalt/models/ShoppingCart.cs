@@ -26,29 +26,14 @@ namespace Trinkanstalt.models
                 _articles.Add(f, amount);
             }
         }
-        public bool removeArticle(Food f, int amount, Location location)
+        public bool removeArticle(Food f, int amount, User user)
         {
             if (_articles.ContainsKey(f))
             {
-                if((_articles[f] - amount) > 0)
-                {
-                    _articles[f] -= amount;
-                    if (bought)
-                    {
-                        location.Inventory.addFood(f, amount);
-                        // auf die rechnung setzen - Locationspezifisch
-                    }
-                    return true;
-                }
-                if ((_articles[f] - amount) == 0)
+                if (!(_articles[f] - amount <= 0))
                 {
                     _articles.Remove(f);
-                    if (bought)
-                    {
-                        location.Inventory.addFood(f, amount);
-                        // auf die rechnung setzen - Locationspezifisch
-
-                    }
+                    user.Balance.addCredit(f.Price * amount);
                     return true;
                 }
             }
