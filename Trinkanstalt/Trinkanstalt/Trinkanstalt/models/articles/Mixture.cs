@@ -6,8 +6,8 @@ namespace Trinkanstalt.models
 {
     class Mixture : Drink
     {
-        public Mixture() : this("", 0.0, 0.0, 0.0) { }
-        public Mixture(string name, double price, double popular, double amount) : base(name, price, popular, amount)
+        public Mixture() : this("", 0.0, FoodType.Mixture, 0.0) { }
+        public Mixture(string name, double price, FoodType foodType, double amount) : base(name, price, foodType, amount)
         {
             
         }

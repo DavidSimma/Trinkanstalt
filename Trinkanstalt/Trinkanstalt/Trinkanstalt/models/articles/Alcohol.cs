@@ -18,9 +18,12 @@ namespace Trinkanstalt.models
                 }
             }
         }
-        public Alcohol() : this("", 0.0, 0.0, 0.0, 0.0) { }
-        public Alcohol(string name, double price, double popular, double amount, double alcoholContent) : base(name, price, popular, amount)
+        
+
+        public Alcohol() : this("", 0.0, FoodType.Alcohol, 0.0, 0.0) { }
+        public Alcohol(string name, double price, FoodType foodType, double amount, double alcoholContent) : base(name, price, foodType, amount)
         {
+            this.FoodType = FoodType.Alcohol;
             this.AlcoholContent = alcoholContent;
         }
 

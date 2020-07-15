@@ -5,7 +5,7 @@ using Xamarin.Forms;
 
 namespace Trinkanstalt.models
 {
-    class Drink : Food
+    abstract class Drink : Food
     {
         private double _amount;
 
@@ -21,8 +21,8 @@ namespace Trinkanstalt.models
             }
         }
 
-        public Drink() : this("", 0.0, 0.0, 0.0) { }
-        public Drink(string name, double price, double popular, double amount) : base(name, price, popular)
+        public Drink() : this("", 0.0, FoodType.Other, 0.0) { }
+        public Drink(string name, double price, FoodType foodType, double amount) : base(name, price, foodType)
         {
             this.Amount = amount;
         }

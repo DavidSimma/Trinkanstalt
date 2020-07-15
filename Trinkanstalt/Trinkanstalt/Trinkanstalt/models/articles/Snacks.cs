@@ -22,8 +22,8 @@ namespace Trinkanstalt.models
         }
         public Spice Spice { get; set; }
 
-        public Snacks() : this("", 0.0, 0.0, 0, Spice.undefined) { }
-        public Snacks(string name, double price, double popular, int weight, Spice spice) : base(name, price, popular)
+        public Snacks() : this("", 0.0, FoodType.Snack, 0, Spice.undefined) { }
+        public Snacks(string name, double price, FoodType foodType, int weight, Spice spice) : base(name, price, foodType)
         {
             this.Weight = weight;
             this.Spice = spice;

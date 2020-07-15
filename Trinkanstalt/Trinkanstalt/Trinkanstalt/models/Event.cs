@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Plugin.PushNotification;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using Xamarin.Forms;
 
 namespace Trinkanstalt.models
 {
@@ -33,9 +35,16 @@ namespace Trinkanstalt.models
         
         public void addUserToEvent(User u)
         {
-            if (_coming.Count <= EventLocation.PeopleLimit)
+            
+            if (_coming.Count-1 < EventLocation.PeopleLimit)
             {
                 _coming.Add(u);
+            }
+            if (_coming.Count-1 == EventLocation.PeopleLimit)
+            {
+                _coming.Add(u);
+                spreadOwes();
+                
             }
         }
         public bool removeUserFromEvent(User u)
@@ -56,7 +65,25 @@ namespace Trinkanstalt.models
                 {
                     return false;
                 }
+
                 return true;
+            }
+        }
+
+        private void spreadOwes()
+        {
+            foreach (User us in _coming)
+            {
+                if (us.Balance.Credit > 0)
+                {
+                    foreach (User use in _coming)
+                    {
+                        if (!us.Equals(use))
+                        {
+                            use.Balance.increasOwe(us, us.Balance.Credit / _coming.Count - 1);
+                        }
+                    }
+                }
             }
         }
         
@@ -69,6 +96,7 @@ namespace Trinkanstalt.models
             this.EventHost = eventHost;
             this.EventLocation = eventLocation;
             this.EventDate = eventDate;
+            
         }
 
         public override string ToString()

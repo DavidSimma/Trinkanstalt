@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Trinkanstalt.models.articles;
 
 namespace Trinkanstalt.models
 {
@@ -12,6 +13,7 @@ namespace Trinkanstalt.models
         private static List<Food> _food = new List<Food>();
         private static List<Location> _locations = new List<Location>();
         private static List<Event> _events = new List<Event>();
+        private static List<FinishedMixture> _finishedMixtures = new List<FinishedMixture>();
 
         public static List<User> User
         {
@@ -135,10 +137,35 @@ namespace Trinkanstalt.models
         }
 
 
+        public static List<FinishedMixture> FinischedMixtures
+        {
+            get
+            {
+                return _finishedMixtures;
+            }
+        }
+        public static void addFinischedMixtures(FinishedMixture fm)
+        {
+            _finishedMixtures.Add(fm);
+        }
+        public static bool removeFinischedMixtures(FinishedMixture fm)
+        {
+            if (_finishedMixtures.Remove(fm))
+            {
+                return true;
+            }
+            return false;
+        }
+        public static int createFinischedMixturesID()
+        {
+            return _finishedMixtures.Count;
+        }
+
+
 
         public Container()
         {
-            _people.Add(new User("", "", "Admin", DateTime.Today, Gender.unknown, RelationShipStatus.complicated, Status.admin ));
+            _people.Add(new User("Admin", "dev123", "", "", "", DateTime.Today, Gender.unknown, RelationShipStatus.complicated, Status.developer));
             _locations.Add(new Location("", DefaultUser, "", 0, false));
             _events.Add(new Event("", DefaultUser, DefaulLocation, DateTime.MinValue));
         }

@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Trinkanstalt.models.articles;
 
 namespace Trinkanstalt.models
 {
     class Shop
     {
         private List<Food> _article = Container.Food;
+        private List<FinishedMixture> _finishedMixtures = Container.FinischedMixtures;
 
         public List<Food> Article
         {
@@ -25,7 +27,18 @@ namespace Trinkanstalt.models
             }
             return __foundArticle;
         }
-
+        public List<FinishedMixture> searchForFinishedMixtures(string FinishedMixtureName)
+        {
+            List<FinishedMixture> __foundFinishedMixtures = new List<FinishedMixture>();
+            foreach (FinishedMixture fm in _finishedMixtures)
+            {
+                if (fm.Name.Contains(FinishedMixtureName))
+                {
+                    __foundFinishedMixtures.Add(fm);
+                }
+            }
+            return __foundFinishedMixtures;
+        }
 
 
     }

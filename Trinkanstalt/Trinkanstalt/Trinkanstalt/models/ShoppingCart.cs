@@ -8,13 +8,9 @@ namespace Trinkanstalt.models
     class ShoppingCart
     {
         private Dictionary<Food, int> _articles = new Dictionary<Food, int>();
-        private bool bought;
-        private List<Location> _locations = Container.getLocations();
+        public bool Bought { get; set; }
 
-        public List<Location> getLocations()
-        {
-            return _locations;
-        }
+        
         public void addArticles(Food f, int amount)
         {
             if (_articles.ContainsKey(f))
@@ -30,14 +26,38 @@ namespace Trinkanstalt.models
         {
             if (_articles.ContainsKey(f))
             {
-                if (!(_articles[f] - amount <= 0))
+                if (_articles[f] - amount > 0)
+                {
+                    _articles[f] -= amount;
+                    user.Inventory.addFood(f, amount);
+                    user.Balance.increaseCredit(f.Price * amount);
+                    return true;
+                }
+            }
+            if (_articles.ContainsKey(f))
+            {
+                if (_articles[f] - amount == 0)
                 {
                     _articles.Remove(f);
-                    user.Balance.addCredit(f.Price * amount);
+                    user.Inventory.addFood(f, amount);
+                    user.Balance.increaseCredit(f.Price * amount);
                     return true;
                 }
             }
             return false;
+        }
+
+        public List<Food> filterBy(FoodType ft)
+        {
+            List<Food> __foundFoods = new List<Food>();
+            foreach(Food f in Container.Food)
+            {
+                if (f.FoodType.Equals(ft))
+                {
+                    __foundFoods.Add(f);
+                }
+            }
+            return __foundFoods;
         }
         public Dictionary<Food, int> getArticles()
         {

@@ -60,7 +60,8 @@ namespace Trinkanstalt.models
            
         }
 
-        // i brauch no a methode wo ma, wenn ma di schulden abbezahlt hat (muss vom Leiher genehmigt werden) die Gutschriften vom Leiher verringert
+        
+
 
 
         public Dictionary<User, double> Owe { get { return this._owe; } }
@@ -69,10 +70,12 @@ namespace Trinkanstalt.models
             if (_owe.ContainsKey(u))
             {
                 _owe[u] += amount;
+                u.Balance.increaseCredit(amount);
             }
             else
             {
                 _owe.Add(u, amount);
+                u.Balance.increaseCredit(amount);
             }
             
         }
@@ -83,11 +86,13 @@ namespace Trinkanstalt.models
                 if (_owe[u] - amount >= 0)
                 {
                     _owe[u] -= amount;
+                    u.Balance.decreaseCredit(amount);
                     return true;
                 }
                 if(_owe[u] - amount == 0)
                 {
                     _owe.Remove(u);
+                    u.Balance.decreaseCredit(amount);
                     return true;
                 }
                 return false;

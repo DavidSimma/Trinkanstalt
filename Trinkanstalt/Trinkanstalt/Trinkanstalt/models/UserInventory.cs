@@ -28,7 +28,7 @@ namespace Trinkanstalt.models
                 if ((_inventory[d] - amount) > 0)
                 {
                     _inventory[d] -= amount;
-                    foreach (Drink drink in Container.getFood())
+                    foreach (Drink drink in Container.Food)
                     {
                         if (d.FoodID.Equals(drink.FoodID))
                         {
@@ -40,7 +40,7 @@ namespace Trinkanstalt.models
                 if ((_inventory[d] - amount) == 0)
                 {
                     _inventory.Remove(d);
-                    foreach (Drink drink in Container.getFood())
+                    foreach (Drink drink in Container.Food)
                     {
                         if (d.FoodID.Equals(drink.FoodID))
                         {
@@ -60,7 +60,7 @@ namespace Trinkanstalt.models
                 if ((_inventory[s] - amount) > 0)
                 {
                     _inventory[s] -= amount;
-                    foreach (Snacks snack in Container.getFood())
+                    foreach (Snacks snack in Container.Food)
                     {
                         if (s.FoodID.Equals(snack.FoodID))
                         {
@@ -72,7 +72,7 @@ namespace Trinkanstalt.models
                 if ((_inventory[s] - amount) == 0)
                 {
                     _inventory.Remove(s);
-                    foreach (Snacks snack in Container.getFood())
+                    foreach (Snacks snack in Container.Food)
                     {
                         if (s.FoodID.Equals(snack.FoodID))
                         {
@@ -85,9 +85,12 @@ namespace Trinkanstalt.models
             }
             return false;
         }
-        public Dictionary<Food, int> getFood()
+        public Dictionary<Food, int> Food
         {
-            return this._inventory;
+            get
+            {
+                return this._inventory;
+            }
         }
 
         public double TotalAlcoholAmount
@@ -96,13 +99,13 @@ namespace Trinkanstalt.models
             {
                 double totalAlcohol = 0;
 
-                Type a = getFood().GetType();
+                Type a = Food.GetType();
                 Type b = typeof(Alcohol);
                 if (a.Equals(b))
                 {
-                    foreach (Alcohol d in getFood().Keys)
+                    foreach (Alcohol d in Food.Keys)
                     {
-                        totalAlcohol += (d.Amount * getFood()[d]);
+                        totalAlcohol += (d.Amount * Food[d]);
                     }
                 }
 
@@ -115,13 +118,13 @@ namespace Trinkanstalt.models
             {
                 double totalMixture = 0;
 
-                Type a = getFood().GetType();
+                Type a = Food.GetType();
                 Type b = typeof(Mixture);
                 if (a.Equals(b))
                 {
-                    foreach (Mixture d in getFood().Keys)
+                    foreach (Mixture d in Food.Keys)
                     {
-                        totalMixture += (d.Amount * getFood()[d]);
+                        totalMixture += (d.Amount * Food[d]);
                     }
                 }
 
@@ -134,13 +137,13 @@ namespace Trinkanstalt.models
             {
                 double totalWeight = 0;
 
-                Type a = getFood().GetType();
+                Type a = Food.GetType();
                 Type b = typeof(Snacks);
                 if (a.Equals(b))
                 {
-                    foreach (Snacks d in getFood().Keys)
+                    foreach (Snacks d in Food.Keys)
                     {
-                        totalWeight += (d.Weight * getFood()[d]);
+                        totalWeight += (d.Weight * Food[d]);
                     }
                 }
 
@@ -152,9 +155,9 @@ namespace Trinkanstalt.models
             get
             {
                 double totalValue = 0;
-                foreach (Food f in getFood().Keys)
+                foreach (Food f in Food.Keys)
                 {
-                    totalValue += (f.Price * getFood()[f]);
+                    totalValue += (f.Price * Food[f]);
                 }
                 return totalValue;
             }
@@ -171,7 +174,7 @@ namespace Trinkanstalt.models
         public override string ToString()
         {
             return "Inventory - Host: " + UserInventoryHost.ToString() + "\n" +
-                getFood().ToString();
+                Food.ToString();
         }
     }
 }

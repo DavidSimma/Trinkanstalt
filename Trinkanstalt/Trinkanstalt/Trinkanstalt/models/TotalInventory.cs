@@ -6,11 +6,11 @@ namespace Trinkanstalt.models
 {
     class TotalInventory
     {     
-        public List<UserInventory> AllInventorys { 
+        public static List<UserInventory> AllInventorys { 
             get 
             {
                 List<UserInventory> __inventorys = new List<UserInventory>();
-                foreach (User u in Container.getUser())
+                foreach (User u in Container.User)
                 {
                     __inventorys.Add(u.Inventory);
                 }
@@ -20,7 +20,7 @@ namespace Trinkanstalt.models
         
             
 
-        public double TotalAlcoholAmount { 
+        public static double TotalAlcoholAmount { 
             get 
             {
                 double totalAlcohol = 0;
@@ -34,7 +34,7 @@ namespace Trinkanstalt.models
         
             
         
-        public double TotalMixtureAmount
+        public static double TotalMixtureAmount
         {
             get
             {
@@ -46,7 +46,7 @@ namespace Trinkanstalt.models
                 return totalMixture;
             }
         }
-        private double TotalSnackWeight
+        private static double TotalSnackWeight
         {
             get
             {
@@ -58,7 +58,7 @@ namespace Trinkanstalt.models
                 return totalWeight;
             }
         }
-        private double TotalValue
+        private static double TotalValue
         {
             get
             {

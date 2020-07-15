@@ -18,9 +18,9 @@ namespace Trinkanstalt.models
     }
     public enum Status
     {
-        admin,
+        developer,
         user,
-        host,
+        admin,
         inferior
     }
     class User
@@ -47,8 +47,44 @@ namespace Trinkanstalt.models
             return false;
         }
         public List<Location> Locations { get { return this._locations; } }
-        
+        private string _username, _password;
         public int UserID { get; }
+        public string UserName
+        {
+            get
+            {
+                return this._username;
+            }
+            set
+            {
+                bool used = false;
+                foreach(User u in Container.User)
+                {
+                    if (u.UserName.Equals(value))
+                    {
+                        used = true;
+                    }
+                    if (!used&&value.Length>=4)
+                    {
+                        this.UserName = value;
+                    }
+                }
+            }
+        }
+        public string UserPassword
+        {
+            get
+            {
+                return this._password;
+            }
+            set
+            {
+                if (value.Length >= 4)
+                {
+                    this._password = value;
+                }
+            }
+        }
         public string Firstname { get; set; }
         public string Lastname { get; set; }
         public string Nickname { get; set; }
@@ -72,9 +108,11 @@ namespace Trinkanstalt.models
 
 
 
-        public User() : this("", "", "", DateTime.MinValue, Gender.unknown, RelationShipStatus.single, Status.user) { }
-        public User(string firstname, string lastname, string Nickname, DateTime BirthDate, Gender gender, RelationShipStatus relationShipStatus, Status status)
+        public User() : this("", "", "", "", "", DateTime.MinValue, Gender.unknown, RelationShipStatus.single, Status.user) { }
+        public User(string userName, string userPassword, string firstname, string lastname, string Nickname, DateTime BirthDate, Gender gender, RelationShipStatus relationShipStatus, Status status)
         {
+            this.UserName = userName;
+            this.UserPassword = userPassword;
             this.UserID = Container.createUserID();
             this.Firstname = firstname;
             this.Lastname = lastname;
