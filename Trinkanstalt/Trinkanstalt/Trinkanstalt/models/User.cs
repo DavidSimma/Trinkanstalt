@@ -4,12 +4,6 @@ using System.Text;
 
 namespace Trinkanstalt.models
 {
-    public enum Gender
-    {
-        male,
-        female,
-        unknown
-    }
     public enum RelationShipStatus
     {
         single,
@@ -91,7 +85,7 @@ namespace Trinkanstalt.models
 
         public DateTime Birthdate { get; set; }
 
-        public Gender Gender { get; set; }
+        public bool IsMale { get; set; }
         public RelationShipStatus RelationShipStatus { get; set; }
         public Status Status { get; set; }
         public UserInventory Inventory { get; }
@@ -108,8 +102,8 @@ namespace Trinkanstalt.models
 
 
 
-        public User() : this("", "", "", "", "", DateTime.MinValue, Gender.unknown, RelationShipStatus.single, Status.user) { }
-        public User(string userName, string userPassword, string firstname, string lastname, string Nickname, DateTime BirthDate, Gender gender, RelationShipStatus relationShipStatus, Status status)
+        public User() : this("", "", "", "", "", DateTime.MinValue, false, RelationShipStatus.single, Status.user) { }
+        public User(string userName, string userPassword, string firstname, string lastname, string Nickname, DateTime BirthDate, bool isMale, RelationShipStatus relationShipStatus, Status status)
         {
             this.UserName = userName;
             this.UserPassword = userPassword;
@@ -117,7 +111,7 @@ namespace Trinkanstalt.models
             this.Firstname = firstname;
             this.Lastname = lastname;
             this.Birthdate = Birthdate;
-            this.Gender = gender;
+            this.IsMale = isMale;
             this.RelationShipStatus = relationShipStatus;
             this.Status = status;
         }
@@ -125,7 +119,7 @@ namespace Trinkanstalt.models
         public override string ToString()
         {
             return Firstname.ToString() + " " + Lastname.ToString() + " (" + Nickname.ToString() + ")" + "\n"
-                + GetAgeFromDate(Birthdate).ToString() + " " + Gender.ToString() + "\n" +
+                + GetAgeFromDate(Birthdate).ToString() + " " + IsMale.ToString() + "\n" +
                 RelationShipStatus.ToString();
 
         }
