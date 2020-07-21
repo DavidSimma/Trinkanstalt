@@ -1,4 +1,7 @@
 ﻿using System;
+using System.IO;
+using System.Xml.Serialization;
+using Trinkanstalt.models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -9,12 +12,13 @@ namespace Trinkanstalt
         public App()
         {
             InitializeComponent();
-
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new Login());
+            
         }
 
         protected override void OnStart()
         {
+            
         }
 
         protected override void OnSleep()

@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Trinkanstalt.Login">
+    <ContentPage.Content>
+        <StackLayout>
+            
+            <BoxView HeightRequest="250"/>
+            <Entry 
+                x:Name="username" 
+                Placeholder="Username"
+                   WidthRequest="300"
+                   HorizontalOptions="Center"/>
+            <Entry 
+                x:Name="password" 
+                Placeholder="Password" 
+                   IsPassword="True"
+                   WidthRequest="300"
+                   HorizontalOptions="Center"/>
+            <Button 
+                x:Name="login" 
+                Text="Einloggen" 
+                    WidthRequest="300"
+                   HorizontalOptions="Center"
+                   BackgroundColor="OrangeRed"/>
+            <Button 
+                x:Name="register" 
+                Text="Registrieren"
+                    WidthRequest="300"
+                   HorizontalOptions="Center"
+                Clicked="register_Clicked"/>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Trinkanstalt.Register">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout>
+                
+                <BoxView HeightRequest="100"/>
+                <Entry 
+                   x:Name="username" 
+                   Placeholder="Username"
+                   WidthRequest="300"
+                   HorizontalOptions="Center"/>
+                <Entry 
+                    x:Name="password" 
+                    Placeholder="Password" 
+                   IsPassword="True"
+                   WidthRequest="300"
+                   HorizontalOptions="Center"/>
+                <Entry 
+                    x:Name="confirmPassword" 
+                    Placeholder="Password wiederholen" 
+                   IsPassword="True"
+                   WidthRequest="300"
+                   HorizontalOptions="Center"/>
+                <Entry 
+                    x:Name="firstname" 
+                    Placeholder="Vorname"
+                   WidthRequest="300"
+                   HorizontalOptions="Center"/>
+                <Entry 
+                    x:Name="lastname" 
+                    Placeholder="Nachname"
+                   WidthRequest="300"
+                   HorizontalOptions="Center"/>
+                <Entry 
+                    x:Name="nickname" 
+                    Placeholder="Spitzname"
+                   WidthRequest="300"
+                   HorizontalOptions="Center"/>
+                <Label 
+                    Text="Geburtstag:" 
+                   WidthRequest="300"
+                   HorizontalOptions="Center"/>
+                <DatePicker 
+                    x:Name="brithDate" 
+                    WidthRequest="300"
+                   HorizontalOptions="Center"/>
+                <Picker 
+                    x:Name="gender" 
+                   Title="Geschlecht" 
+                   WidthRequest="300"
+                   HorizontalOptions="Center">
+                    <Picker.Items>
+                        <x:String>Männlich</x:String>
+                        <x:String>Weiblich</x:String>
+                    </Picker.Items>
+                </Picker>
+                <Picker 
+                    x:Name="relationShipStatus" 
+                   Title="Beziehungsstatus" 
+                   WidthRequest="300"
+                   HorizontalOptions="Center">
+                    <Picker.Items>
+                        <x:String>Single</x:String>
+                        <x:String>Vergeben</x:String>
+                        <x:String>Kompliziert</x:String>
+                    </Picker.Items>
+                </Picker>
+
+                <Button Text="Registrieren" 
+                    WidthRequest="300"
+                   HorizontalOptions="Center"
+                   BackgroundColor="OrangeRed"
+                        />
+                
+
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

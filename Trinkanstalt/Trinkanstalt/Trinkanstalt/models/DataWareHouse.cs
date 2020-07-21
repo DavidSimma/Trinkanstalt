@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Xml.Serialization;
 using Trinkanstalt.models.articles;
 
 namespace Trinkanstalt.models
@@ -14,7 +16,8 @@ namespace Trinkanstalt.models
         private static List<Location> _locations = new List<Location>();
         private static List<Event> _events = new List<Event>();
         private static List<FinishedMixture> _finishedMixtures = new List<FinishedMixture>();
-
+        private static bool isLoggedIn;
+        
         public static List<User> User
         {
             get
@@ -161,13 +164,43 @@ namespace Trinkanstalt.models
             return _finishedMixtures.Count;
         }
 
-
+        public static bool IsLoggedIn{
+            get 
+            {
+                try
+                {
+                    XmlSerializer ser = new XmlSerializer(typeof(bool));
+                    using (Stream str = File.Open("../local/isLoggedIn.txt", FileMode.Open))
+                        isLoggedIn = (bool)ser.Deserialize(str);
+                    return isLoggedIn;
+                }
+                catch(IOException e)
+                {
+                    return false;
+                }
+            }
+            set
+            {
+                try
+                {
+                    XmlSerializer ser = new XmlSerializer(typeof(bool));
+                    using (Stream str = File.Open("../local/isLoggedIn.txt", FileMode.Open))
+                        ser.Serialize(str, value);
+                    isLoggedIn = value;
+                }
+                catch (IOException e)
+                {
+                    isLoggedIn = false;
+                }
+            }
+        }
 
         public DataWareHouse()
         {
-            _people.Add(new User("Admin", "dev123", "", "", "", DateTime.Today, Gender.unknown, RelationShipStatus.complicated, Status.developer));
+            _people.Add(new User("Admin", "dev123", "", "", "", DateTime.Today, true, RelationShipStatus.complicated, Status.developer));
             _locations.Add(new Location("", DefaultUser, "", 0, false));
             _events.Add(new Event("", DefaultUser, DefaulLocation, DateTime.MinValue));
+            IsLoggedIn = false;
         }
     }
 }
