@@ -10,7 +10,7 @@ namespace Trinkanstalt.models
             get 
             {
                 List<UserInventory> __inventorys = new List<UserInventory>();
-                foreach (User u in Container.User)
+                foreach (User u in DataWareHouse.User)
                 {
                     __inventorys.Add(u.Inventory);
                 }

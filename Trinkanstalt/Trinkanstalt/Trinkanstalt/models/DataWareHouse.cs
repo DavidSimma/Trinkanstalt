@@ -7,7 +7,7 @@ using Trinkanstalt.models.articles;
 
 namespace Trinkanstalt.models
 {
-    class Container
+    class DataWareHouse
     {
         private static List<User> _people = new List<User>();
         private static List<Food> _food = new List<Food>();
@@ -163,7 +163,7 @@ namespace Trinkanstalt.models
 
 
 
-        public Container()
+        public DataWareHouse()
         {
             _people.Add(new User("Admin", "dev123", "", "", "", DateTime.Today, Gender.unknown, RelationShipStatus.complicated, Status.developer));
             _locations.Add(new Location("", DefaultUser, "", 0, false));

@@ -88,10 +88,10 @@ namespace Trinkanstalt.models
         }
         
 
-        public Event() : this("", Container.DefaultUser, Container.DefaulLocation, DateTime.MinValue) { }
+        public Event() : this("", DataWareHouse.DefaultUser, DataWareHouse.DefaulLocation, DateTime.MinValue) { }
         public Event(string eventTitle, User eventHost, Location eventLocation, DateTime eventDate)
         {
-            this.EventID = Container.createEventID();
+            this.EventID = DataWareHouse.createEventID();
             this.EventTitle = eventTitle;
             this.EventHost = eventHost;
             this.EventLocation = eventLocation;

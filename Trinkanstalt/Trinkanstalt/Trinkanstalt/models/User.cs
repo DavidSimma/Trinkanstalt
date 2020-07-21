@@ -52,7 +52,7 @@ namespace Trinkanstalt.models
             set
             {
                 bool used = false;
-                foreach(User u in Container.User)
+                foreach(User u in DataWareHouse.User)
                 {
                     if (u.UserName.Equals(value))
                     {
@@ -107,7 +107,7 @@ namespace Trinkanstalt.models
         {
             this.UserName = userName;
             this.UserPassword = userPassword;
-            this.UserID = Container.createUserID();
+            this.UserID = DataWareHouse.createUserID();
             this.Firstname = firstname;
             this.Lastname = lastname;
             this.Birthdate = Birthdate;

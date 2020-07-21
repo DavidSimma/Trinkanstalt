@@ -39,7 +39,7 @@ namespace Trinkanstalt.models.articles
         public FinishedMixture() : this("", null, null, 0) { }
         public FinishedMixture(string name, Alcohol alcohol, Mixture mixture, int mixtureRatio)
         {
-            this.FinishedMixtureID = Container.createFinischedMixturesID();
+            this.FinishedMixtureID = DataWareHouse.createFinischedMixturesID();
             this.Name = name;
             this.Alcohol = alcohol;
             this.Mixture = mixture;

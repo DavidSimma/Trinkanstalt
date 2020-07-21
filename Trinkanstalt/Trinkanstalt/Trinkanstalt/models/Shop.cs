@@ -7,8 +7,8 @@ namespace Trinkanstalt.models
 {
     class Shop
     {
-        private List<Food> _article = Container.Food;
-        private List<FinishedMixture> _finishedMixtures = Container.FinischedMixtures;
+        private List<Food> _article = DataWareHouse.Food;
+        private List<FinishedMixture> _finishedMixtures = DataWareHouse.FinischedMixtures;
 
         public List<Food> Article
         {

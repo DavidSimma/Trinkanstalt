@@ -23,7 +23,7 @@ namespace Trinkanstalt.models
         public Food() : this("", 0.0, FoodType.Other) { }
         public Food(string name, double price, FoodType foodType)
         {
-            this.FoodID= Container.createFoodID();
+            this.FoodID= DataWareHouse.createFoodID();
             this.Name = name;
             this.Price = price;
             this.FoodType = foodType;

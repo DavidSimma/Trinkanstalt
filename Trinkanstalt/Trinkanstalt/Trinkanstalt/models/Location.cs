@@ -31,7 +31,7 @@ namespace Trinkanstalt.models
             {
 
                 List<Event> __foundEvents = new List<Event>();
-                foreach (Event e in Container.Events)
+                foreach (Event e in DataWareHouse.Events)
                 {
                     if (e.EventActive && e.EventLocation.LocationID == this.LocationID)
                     {
@@ -42,10 +42,10 @@ namespace Trinkanstalt.models
             }
         }
 
-        public Location() : this("", Container.DefaultUser, "", 5, false) { }
+        public Location() : this("", DataWareHouse.DefaultUser, "", 5, false) { }
         public Location(string locationTitle, User host, string address, int peopleLimit, bool locationPass)
         {
-            this.LocationID = Container.createLocationID();
+            this.LocationID = DataWareHouse.createLocationID();
             this.LocationTitel = locationTitle;
             this.Host = host;
             this.Address = address;

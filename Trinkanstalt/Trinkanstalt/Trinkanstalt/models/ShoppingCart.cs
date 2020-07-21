@@ -50,7 +50,7 @@ namespace Trinkanstalt.models
         public List<Food> filterBy(FoodType ft)
         {
             List<Food> __foundFoods = new List<Food>();
-            foreach(Food f in Container.Food)
+            foreach(Food f in DataWareHouse.Food)
             {
                 if (f.FoodType.Equals(ft))
                 {

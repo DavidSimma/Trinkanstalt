@@ -25,7 +25,7 @@ namespace Trinkanstalt.models
         }
         public void updateCreditAndOwe()
         {
-            foreach(User u in Container.User)
+            foreach(User u in DataWareHouse.User)
             {
                 foreach(User us in u.Balance.Owe.Keys)
                 {

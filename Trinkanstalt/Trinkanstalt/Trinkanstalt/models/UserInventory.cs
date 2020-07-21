@@ -28,7 +28,7 @@ namespace Trinkanstalt.models
                 if ((_inventory[d] - amount) > 0)
                 {
                     _inventory[d] -= amount;
-                    foreach (Drink drink in Container.Food)
+                    foreach (Drink drink in DataWareHouse.Food)
                     {
                         if (d.FoodID.Equals(drink.FoodID))
                         {
@@ -40,7 +40,7 @@ namespace Trinkanstalt.models
                 if ((_inventory[d] - amount) == 0)
                 {
                     _inventory.Remove(d);
-                    foreach (Drink drink in Container.Food)
+                    foreach (Drink drink in DataWareHouse.Food)
                     {
                         if (d.FoodID.Equals(drink.FoodID))
                         {
@@ -60,7 +60,7 @@ namespace Trinkanstalt.models
                 if ((_inventory[s] - amount) > 0)
                 {
                     _inventory[s] -= amount;
-                    foreach (Snacks snack in Container.Food)
+                    foreach (Snacks snack in DataWareHouse.Food)
                     {
                         if (s.FoodID.Equals(snack.FoodID))
                         {
@@ -72,7 +72,7 @@ namespace Trinkanstalt.models
                 if ((_inventory[s] - amount) == 0)
                 {
                     _inventory.Remove(s);
-                    foreach (Snacks snack in Container.Food)
+                    foreach (Snacks snack in DataWareHouse.Food)
                     {
                         if (s.FoodID.Equals(snack.FoodID))
                         {
@@ -164,7 +164,7 @@ namespace Trinkanstalt.models
         }
 
 
-        public UserInventory() : this(Container.DefaultUser) { }
+        public UserInventory() : this(DataWareHouse.DefaultUser) { }
         public UserInventory(User userInventoryHost)
         {
             this.UserInventoryID = userInventoryHost.UserID;
