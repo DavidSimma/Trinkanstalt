@@ -17,10 +17,11 @@ namespace Trinkanstalt
             InitializeComponent();
             this.Title = "Registrieren";
         }
+        
 
-        private void Button_Clicked(object sender, EventArgs e)
+        private async void Anmelden_Clicked(object sender, EventArgs e)
         {
-
+            Application.Current.MainPage = new Login();
         }
     }
 }

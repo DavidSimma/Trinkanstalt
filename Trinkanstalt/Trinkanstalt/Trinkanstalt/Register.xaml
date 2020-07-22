@@ -8,8 +8,15 @@
     <ContentPage.Content>
         <StackLayout>
             <StackLayout>
+                <Label
+                Text="Registrieren"
+                FontSize="Title"
+                TextColor="Black"
+                BackgroundColor="GreenYellow"
+                HorizontalTextAlignment="Center"
+                HeightRequest="50"
+                VerticalTextAlignment="Center"/>
                 
-                <BoxView HeightRequest="100"/>
                 <Entry 
                    x:Name="username" 
                    Placeholder="Username"
@@ -77,7 +84,14 @@
                    HorizontalOptions="Center"
                    BackgroundColor="OrangeRed"
                         />
-                
+                <Button
+                    x:Name="Anmelden"
+                    Text="Anmelden" 
+                    WidthRequest="300"
+                   HorizontalOptions="Center"
+                    Clicked="Anmelden_Clicked"
+                   />
+
 
             </StackLayout>
         </StackLayout>

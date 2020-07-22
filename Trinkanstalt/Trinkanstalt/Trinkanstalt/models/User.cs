@@ -41,30 +41,10 @@ namespace Trinkanstalt.models
             return false;
         }
         public List<Location> Locations { get { return this._locations; } }
-        private string _username, _password;
+        private string _password;
         public int UserID { get; }
-        public string UserName
-        {
-            get
-            {
-                return this._username;
-            }
-            set
-            {
-                bool used = false;
-                foreach(User u in DataWareHouse.User)
-                {
-                    if (u.UserName.Equals(value))
-                    {
-                        used = true;
-                    }
-                    if (!used&&value.Length>=4)
-                    {
-                        this.UserName = value;
-                    }
-                }
-            }
-        }
+        public string UserName { get; set; }
+        
         public string UserPassword
         {
             get

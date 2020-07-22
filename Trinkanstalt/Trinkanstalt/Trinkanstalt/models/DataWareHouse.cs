@@ -17,7 +17,19 @@ namespace Trinkanstalt.models
         private static List<Event> _events = new List<Event>();
         private static List<FinishedMixture> _finishedMixtures = new List<FinishedMixture>();
         private static bool isLoggedIn;
-        
+
+
+        public static bool IsInitialized { get; set; } = false;
+
+        public static void Initialize()
+        {
+            IsInitialized = true;
+            _people.Add(new User("Admin", "dev123", "", "", "", DateTime.Today, true, RelationShipStatus.complicated, Status.developer));
+            _locations.Add(new Location("", DefaultUser, "", 0, false));
+            _events.Add(new Event("", DefaultUser, DefaulLocation, DateTime.MinValue));
+            IsLoggedIn = false;
+        }
+
         public static List<User> User
         {
             get
@@ -193,14 +205,6 @@ namespace Trinkanstalt.models
                     isLoggedIn = false;
                 }
             }
-        }
-
-        public DataWareHouse()
-        {
-            _people.Add(new User("Admin", "dev123", "", "", "", DateTime.Today, true, RelationShipStatus.complicated, Status.developer));
-            _locations.Add(new Location("", DefaultUser, "", 0, false));
-            _events.Add(new Event("", DefaultUser, DefaulLocation, DateTime.MinValue));
-            IsLoggedIn = false;
         }
     }
 }
