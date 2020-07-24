@@ -44,6 +44,13 @@
                     WidthRequest="300"
                    HorizontalOptions="Center"
                 Clicked="register_Clicked"/>
+            <Button
+                x:Name="forgotPassword" 
+                Text="Passwort vergessen?"
+                VerticalOptions="EndAndExpand"
+                    WidthRequest="300"
+                   HorizontalOptions="Center"
+                Clicked="forgotPassword_Clicked"/>
 
         </StackLayout>
     </ContentPage.Content>

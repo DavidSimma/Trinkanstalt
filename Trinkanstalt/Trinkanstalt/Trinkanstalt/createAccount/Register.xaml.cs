@@ -23,5 +23,30 @@ namespace Trinkanstalt
         {
             Application.Current.MainPage = new Login();
         }
+
+        private void username_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void password_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void confirmPassword_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void relationShipStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void gender_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

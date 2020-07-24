@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Trinkanstalt.mainPages;
 using Trinkanstalt.models;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -28,17 +29,15 @@ namespace Trinkanstalt
 
         private void login_Clicked(object sender, EventArgs e)
         {
-            if(usernameExists && correctPasswort)
+            if (usernameExists && correctPasswort)
             {
-                //new NavitagionPage muss weg!
-                Application.Current.MainPage = new NavigationPage(new Master());
-                
+                Application.Current.MainPage = new SlideMenu();
             }
             else
             {
-                 DisplayAlert("Fehler", "Benutzername und/oder Passwort sind nicht richtig!", "OK");
+                DisplayAlert("Fehler", "Benutzername und/oder Passwort sind nicht richtig!", "OK");
             }
-            
+
             System.Diagnostics.Debug.WriteLine(usernameExists);
             System.Diagnostics.Debug.WriteLine(correctPasswort);
 
@@ -57,6 +56,13 @@ namespace Trinkanstalt
             {
                 correctPasswort = false;
             }
+        }
+
+        private void forgotPassword_Clicked(object sender, EventArgs e)
+        {
+            DisplayAlert("Passwort/Benutzername vergessen?", "Falls du dienen Benutzernamen und/oder dein Passwort vergessen hast, jedoch schon ein Konto hast, " +
+                "wende dich bitte an den Entwickler dieser App!" + "\n" +
+                "WhatsApp: 0677 61596328", "OK");
         }
 
         private void username_TextChanged(object sender, TextChangedEventArgs e)

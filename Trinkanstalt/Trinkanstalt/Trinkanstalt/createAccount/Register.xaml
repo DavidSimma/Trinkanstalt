@@ -16,24 +16,29 @@
                 HorizontalTextAlignment="Center"
                 HeightRequest="50"
                 VerticalTextAlignment="Center"/>
-                
+
+                <BoxView/>
+
                 <Entry 
                    x:Name="username" 
                    Placeholder="Username"
                    WidthRequest="300"
-                   HorizontalOptions="Center"/>
+                   HorizontalOptions="Center"
+                    TextChanged="username_TextChanged"/>
                 <Entry 
                     x:Name="password" 
                     Placeholder="Password" 
                    IsPassword="True"
                    WidthRequest="300"
-                   HorizontalOptions="Center"/>
+                   HorizontalOptions="Center"
+                    TextChanged="password_TextChanged"/>
                 <Entry 
                     x:Name="confirmPassword" 
                     Placeholder="Password wiederholen" 
                    IsPassword="True"
                    WidthRequest="300"
-                   HorizontalOptions="Center"/>
+                   HorizontalOptions="Center"
+                    TextChanged="confirmPassword_TextChanged"/>
                 <Entry 
                     x:Name="firstname" 
                     Placeholder="Vorname"
@@ -52,7 +57,8 @@
                 <Label 
                     Text="Geburtstag:" 
                    WidthRequest="300"
-                   HorizontalOptions="Center"/>
+                   HorizontalOptions="Center"
+                    />
                 <DatePicker 
                     x:Name="brithDate" 
                     WidthRequest="300"
@@ -61,7 +67,8 @@
                     x:Name="gender" 
                    Title="Geschlecht" 
                    WidthRequest="300"
-                   HorizontalOptions="Center">
+                   HorizontalOptions="Center"
+                    SelectedIndexChanged="gender_SelectedIndexChanged">
                     <Picker.Items>
                         <x:String>Männlich</x:String>
                         <x:String>Weiblich</x:String>
@@ -71,7 +78,8 @@
                     x:Name="relationShipStatus" 
                    Title="Beziehungsstatus" 
                    WidthRequest="300"
-                   HorizontalOptions="Center">
+                   HorizontalOptions="Center"
+                    SelectedIndexChanged="relationShipStatus_SelectedIndexChanged">
                     <Picker.Items>
                         <x:String>Single</x:String>
                         <x:String>Vergeben</x:String>

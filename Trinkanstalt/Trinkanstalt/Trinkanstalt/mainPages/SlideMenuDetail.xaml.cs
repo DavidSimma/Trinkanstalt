@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace Trinkanstalt.mainPages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Account : ContentPage
+    public partial class SlideMenuDetail : ContentPage
     {
-        public Account()
+        public SlideMenuDetail()
         {
             InitializeComponent();
         }

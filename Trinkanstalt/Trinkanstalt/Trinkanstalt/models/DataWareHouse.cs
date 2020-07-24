@@ -24,7 +24,7 @@ namespace Trinkanstalt.models
         public static void Initialize()
         {
             IsInitialized = true;
-            _people.Add(new User("Admin", "dev123", "", "", "", DateTime.Today, true, RelationShipStatus.complicated, Status.developer));
+            _people.Add(new User("admin", "dev123", "", "", "", DateTime.Today, true, RelationShipStatus.complicated, Status.developer));
             _locations.Add(new Location("", DefaultUser, "", 0, false));
             _events.Add(new Event("", DefaultUser, DefaulLocation, DateTime.MinValue));
             IsLoggedIn = false;
