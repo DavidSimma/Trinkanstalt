@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Xml.Serialization;
 using Trinkanstalt.mainPages;
@@ -13,7 +14,16 @@ namespace Trinkanstalt
         public App()
         {
             InitializeComponent();
-            MainPage = new Login();
+            if (!File.Exists(DataWareHouse.isLoggedInPath))
+            {
+                File.Create("loggedIn.txt");
+                if (File.Exists())
+                {
+                    Debug.WriteLine("\n \n \n \n \n \n \n nagga");
+                }
+                }
+            bool loggedIn = DataWareHouse.IsLoggedIn;
+            
             
         }
 
@@ -34,5 +44,7 @@ namespace Trinkanstalt
         protected override void OnResume()
         {
         }
+
+
     }
 }

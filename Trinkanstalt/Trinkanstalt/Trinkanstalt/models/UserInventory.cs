@@ -8,7 +8,7 @@ namespace Trinkanstalt.models
     {
         private Dictionary<Food, int> _inventory = new Dictionary<Food, int>();
 
-        public int UserInventoryID { get; }
+        
         public User UserInventoryHost { get; set; }
         public void addFood(Food f, int amount)
         {
@@ -167,7 +167,7 @@ namespace Trinkanstalt.models
         public UserInventory() : this(DataWareHouse.DefaultUser) { }
         public UserInventory(User userInventoryHost)
         {
-            this.UserInventoryID = userInventoryHost.UserID;
+            
             this.UserInventoryHost = userInventoryHost;
         }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,8 @@ namespace Trinkanstalt
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Login : ContentPage
     {
+
+        
         private bool usernameExists = false, correctPasswort= false;
         User loginUser;
         public Login()
@@ -31,7 +34,9 @@ namespace Trinkanstalt
         {
             if (usernameExists && correctPasswort)
             {
-                Application.Current.MainPage = new SlideMenu();
+                DataWareHouse.currentUser = loginUser;
+                DataWareHouse.IsLoggedIn = true;
+                
             }
             else
             {
@@ -47,14 +52,16 @@ namespace Trinkanstalt
         private void passwort_TextChanged(object sender, TextChangedEventArgs e)
         {
             System.Diagnostics.Debug.WriteLine(passwort.Text);
-
-            if (loginUser.UserPassword.Equals(passwort.Text))
+            if (usernameExists)
             {
-                correctPasswort = true;
-            }
-            else
-            {
-                correctPasswort = false;
+                if (loginUser.UserPassword == passwort.Text)
+                {
+                    correctPasswort = true;
+                }
+                else
+                {
+                    correctPasswort = false;
+                }
             }
         }
 
@@ -62,7 +69,7 @@ namespace Trinkanstalt
         {
             DisplayAlert("Passwort/Benutzername vergessen?", "Falls du dienen Benutzernamen und/oder dein Passwort vergessen hast, jedoch schon ein Konto hast, " +
                 "wende dich bitte an den Entwickler dieser App!" + "\n" +
-                "WhatsApp: 0677 61596328", "OK");
+                "Snapchat: david.simma31", "OK");
         }
 
         private void username_TextChanged(object sender, TextChangedEventArgs e)

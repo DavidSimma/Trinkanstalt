@@ -42,7 +42,6 @@ namespace Trinkanstalt.models
         }
         public List<Location> Locations { get { return this._locations; } }
         private string _password;
-        public int UserID { get; }
         public string UserName { get; set; }
         
         public string UserPassword
@@ -87,7 +86,6 @@ namespace Trinkanstalt.models
         {
             this.UserName = userName;
             this.UserPassword = userPassword;
-            this.UserID = DataWareHouse.createUserID();
             this.Firstname = firstname;
             this.Lastname = lastname;
             this.Birthdate = Birthdate;

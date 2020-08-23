@@ -3,9 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Xml.Serialization;
+using Trinkanstalt.mainPages;
 using Trinkanstalt.models.articles;
+using Xamarin.Forms;
 
 namespace Trinkanstalt.models
 {
@@ -16,8 +19,10 @@ namespace Trinkanstalt.models
         private static List<Location> _locations = new List<Location>();
         private static List<Event> _events = new List<Event>();
         private static List<FinishedMixture> _finishedMixtures = new List<FinishedMixture>();
-        private static bool isLoggedIn;
 
+        private static string path = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+        public static string isLoggedInPath = Path.Combine(path, "loggedIn.txt");
+        public static string usernamePath = Path.Combine(path, "username.txt");
 
         public static bool IsInitialized { get; set; } = false;
 
@@ -25,11 +30,14 @@ namespace Trinkanstalt.models
         {
             IsInitialized = true;
             _people.Add(new User("admin", "dev123", "", "", "", DateTime.Today, true, RelationShipStatus.complicated, Status.developer));
+
             _locations.Add(new Location("", DefaultUser, "", 0, false));
             _events.Add(new Event("", DefaultUser, DefaulLocation, DateTime.MinValue));
             IsLoggedIn = false;
         }
 
+        
+        
         public static List<User> User
         {
             get
@@ -49,10 +57,7 @@ namespace Trinkanstalt.models
             }
             return false;
         }
-        public static int createUserID()
-        {
-            return _people.Count;
-        }
+        
         public static User DefaultUser
         {
             get
@@ -179,32 +184,86 @@ namespace Trinkanstalt.models
         public static bool IsLoggedIn{
             get 
             {
-                try
+                using (var streamReader = new StreamReader(isLoggedInPath))
                 {
-                    XmlSerializer ser = new XmlSerializer(typeof(bool));
-                    using (Stream str = File.Open("../local/isLoggedIn.txt", FileMode.Open))
-                        isLoggedIn = (bool)ser.Deserialize(str);
-                    return isLoggedIn;
-                }
-                catch(IOException e)
-                {
-                    return false;
+                    string loggedIn = streamReader.ReadLine();
+                    string username = streamReader.ReadLine();
+                    string password = streamReader.ReadLine();
+
+                    if (loggedIn == "true")
+                    {
+                        if (userExists(username, password))
+                        {
+                            Application.Current.MainPage = new SlideMenu();
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    }
+                    else
+                    {
+                        Application.Current.MainPage = new Login();
+                        return false;
+                    }
                 }
             }
             set
             {
-                try
-                {
-                    XmlSerializer ser = new XmlSerializer(typeof(bool));
-                    using (Stream str = File.Open("../local/isLoggedIn.txt", FileMode.Open))
-                        ser.Serialize(str, value);
-                    isLoggedIn = value;
+                if(value == false)
+                { 
+                    Application.Current.MainPage = new Login();
+                   
                 }
-                catch (IOException e)
+                else
                 {
-                    isLoggedIn = false;
+                    using (var streamWriter = new StreamWriter(isLoggedInPath, true))
+                    {
+                        streamWriter.WriteLine("true");
+                        streamWriter.WriteLine(currentUser.UserName);
+                        streamWriter.WriteLine(currentUser.UserPassword);
+
+                    }
+                    
+
+                    Application.Current.MainPage = new SlideMenu();
+
                 }
             }
         }
+
+        public static User currentUser { get; set; }
+
+        private static bool userExists (string username, string password){ 
+            
+                foreach (User u in User)
+                {
+                    System.Diagnostics.Debug.WriteLine(u.UserName);
+
+                    if (u.UserName == username)
+                    {
+                        if(u.UserPassword == password)
+                        {
+                            currentUser = u;
+                            return true;
+                            
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                        
+                    }
+                    else
+                    {
+                        return false;
+                    }
+
+
+                }
+                return false;
+        }
+        
     }
 }

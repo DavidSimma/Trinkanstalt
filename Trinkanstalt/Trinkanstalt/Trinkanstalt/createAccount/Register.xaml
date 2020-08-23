@@ -23,11 +23,10 @@
                    x:Name="username" 
                    Placeholder="Username"
                    WidthRequest="300"
-                   HorizontalOptions="Center"
-                    TextChanged="username_TextChanged"/>
+                   HorizontalOptions="Center"/>
                 <Entry 
                     x:Name="password" 
-                    Placeholder="Password" 
+                    Placeholder="Password (4+ Zeichen)" 
                    IsPassword="True"
                    WidthRequest="300"
                    HorizontalOptions="Center"
@@ -62,7 +61,8 @@
                 <DatePicker 
                     x:Name="brithDate" 
                     WidthRequest="300"
-                   HorizontalOptions="Center"/>
+                   HorizontalOptions="Center"
+                    />
                 <Picker 
                     x:Name="gender" 
                    Title="Geschlecht" 
@@ -87,10 +87,13 @@
                     </Picker.Items>
                 </Picker>
 
-                <Button Text="Registrieren" 
+                <Button
+                    x:Name="registrieren"
+                    Text="Registrieren" 
                     WidthRequest="300"
                    HorizontalOptions="Center"
                    BackgroundColor="OrangeRed"
+                   Clicked="registrieren_Clicked"
                         />
                 <Button
                     x:Name="Anmelden"
